@@ -1,0 +1,61 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Uhr.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="435" d:DesignHeight="230"
+        x:Class="Uhr.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Uhr"
+        Width="435"
+        Height="230">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Border Background="#fb7c00" Height="140" BorderThickness="5" BorderBrush="Black" CornerRadius="5" VerticalAlignment="Top">
+        <StackPanel>
+            <Canvas>
+                <Label FontFamily="{StaticResource Dseg14-Classic}"
+                           FontSize="50"
+                           FontWeight="Bold"
+                           Foreground="#d66a00"
+                           Canvas.Left="10"
+                           Canvas.Top="10"
+                           Content="~~~: ~~:~~:~~" />
+                <Label FontFamily="{StaticResource Dseg14-Classic}"
+                           FontSize="50"
+                           FontWeight="Bold"
+                           Foreground="#222222"
+                           Canvas.Left="10"
+                           Canvas.Top="10"
+                           Content="{Binding CurrentTimeUtc}" />
+                
+            </Canvas>
+            <Canvas>
+                <Label FontFamily="{StaticResource Dseg14-Classic}"
+                           FontSize="50"
+                           FontWeight="Bold"
+                           Foreground="#d66a00"
+                           Canvas.Left="10"
+                           Canvas.Top="70"
+                           Content="~~~: ~~:~~:~~" />
+                <Label FontFamily="{StaticResource Dseg14-Classic}"
+                           FontSize="50"
+                           FontWeight="Bold"
+                           Foreground="#222222"
+                           Canvas.Left="10"
+                           Canvas.Top="70"
+                           Content="{Binding CurrentTimeLoc}" />
+                
+                <Button Canvas.Top="170" Canvas.Left="10" Command="{Binding TriggerUpdateTime}">Update Zeit</Button>
+            </Canvas>
+            
+            
+        </StackPanel>
+    </Border>
+</Window>

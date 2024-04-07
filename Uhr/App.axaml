@@ -1,0 +1,19 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Uhr.App"
+             xmlns:local="using:Uhr"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+  
+    <Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+             
+    <Application.Resources>
+        <FontFamily x:Key="Dseg14-Classic">avares://Uhr/Assets/Fonts/DSEG14-Classic#DSEG14</FontFamily>
+    </Application.Resources>
+</Application>
