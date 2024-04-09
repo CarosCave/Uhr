@@ -6,25 +6,26 @@ namespace Uhr.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    [ObservableProperty] 
     private static Time _timeUtc = new Time("utc");
     
-    [ObservableProperty]
     private static Time _timeLoc = new Time("loc");
-
-    [ObservableProperty]
+    
     private string _strTimeUtc = _timeUtc.GetTime("utc");
-
-    [ObservableProperty] 
+    
     private string _strTimeLoc = _timeLoc.GetTime("loc");
 
-    public string CurrentTimeUtc => "UTC: " + StrTimeUtc;
-    public string CurrentTimeLoc => "LOC: " + StrTimeLoc;
+    [ObservableProperty]
+    private string _currentTimeUtc;// => "UTC: " + StrTimeUtc;
+    
+    [ObservableProperty]
+    private string _currentTimeLoc;// => "LOC: " + StrTimeLoc;
 
     [RelayCommand]
     public void TriggerUpdateTime()
     {
-        StrTimeUtc = _timeUtc.GetTime("utc");
-        StrTimeLoc = _timeLoc.GetTime("loc");
+        _strTimeUtc = _timeUtc.GetTime("utc");
+        _strTimeLoc = _timeLoc.GetTime("loc");
+        CurrentTimeLoc = "LOC: " + _strTimeLoc;
+        CurrentTimeUtc = "UTC: " + _strTimeUtc;
     }
 }
