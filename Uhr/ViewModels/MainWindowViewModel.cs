@@ -24,7 +24,7 @@ public partial class MainWindowViewModel : ViewModelBase
     
     public MainWindowViewModel()
     {
-        new Timer(TriggerUpdateTime, null, 0, 1000);
+        new Timer(TriggerUpdateTime, null, 0, 500);
     }
     
     [RelayCommand]
