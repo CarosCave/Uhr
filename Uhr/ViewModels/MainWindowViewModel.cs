@@ -1,6 +1,8 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Uhr.Models;
+using System.Threading;
 
 namespace Uhr.ViewModels;
 
@@ -15,17 +17,23 @@ public partial class MainWindowViewModel : ViewModelBase
     private string _strTimeLoc = _timeLoc.GetTime("loc");
 
     [ObservableProperty]
-    private string _currentTimeUtc;// => "UTC: " + StrTimeUtc;
+    private string? _currentTimeUtc;
     
     [ObservableProperty]
-    private string _currentTimeLoc;// => "LOC: " + StrTimeLoc;
-
+    private string? _currentTimeLoc;
+    
+    public MainWindowViewModel()
+    {
+        new Timer(TriggerUpdateTime, null, 0, 1000);
+    }
+    
     [RelayCommand]
-    public void TriggerUpdateTime()
+    public void TriggerUpdateTime(object? state = null)
     {
         _strTimeUtc = _timeUtc.GetTime("utc");
         _strTimeLoc = _timeLoc.GetTime("loc");
         CurrentTimeLoc = "LOC: " + _strTimeLoc;
         CurrentTimeUtc = "UTC: " + _strTimeUtc;
+        Console.WriteLine(CurrentTimeLoc);
     }
 }
